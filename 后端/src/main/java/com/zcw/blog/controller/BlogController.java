@@ -1,11 +1,6 @@
-/**
- * ***************************************************************************** Copyright (c) 2019,
- * 2019 Hirain Technologies Corporation.
- * ****************************************************************************
- */
 package com.zcw.blog.controller;
 
-import com.zcw.blog.model.ResponseBo;
+import com.zcw.blog.common.model.ResponseBo;
 import com.zcw.blog.service.FlowService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,7 +33,7 @@ public class BlogController {
       return ResponseBo.ok(flowService.upload(file));
     } catch (Exception e) {
       log.error(e.getMessage(), e);
-      return ResponseBo.error("发布失败");
+      return ResponseBo.error("上传失败");
     }
   }
 
@@ -50,12 +45,6 @@ public class BlogController {
    */
   @PostMapping("/deleteImg")
   public ResponseBo delete(@RequestParam("filepaths") String filepaths) {
-    try {
-
-      return ResponseBo.ok(flowService.delete(filepaths));
-    } catch (Exception e) {
-      log.error(e.getMessage(), e);
-      return ResponseBo.error("发布失败");
-    }
+    return ResponseBo.ok(flowService.delete(filepaths));
   }
 }

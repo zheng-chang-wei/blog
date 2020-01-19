@@ -1,4 +1,4 @@
-package com.zcw.blog.model;
+package com.zcw.blog.common.model;
 
 /**
  * 返回代码 常量

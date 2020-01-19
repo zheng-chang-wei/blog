@@ -1,19 +1,18 @@
 package com.zcw.blog.service;
 
-import java.util.List;
-
 import com.zcw.blog.model.Article;
+
+import java.util.List;
 
 public interface ArticleService {
 
-	List<Article> listArticles();
+  List<Article> listArticles(Integer categoryId, String title);
 
-	Article getArticleById(int articleId);
+  Article getArticleById(int articleId);
 
-	void insertArticle(Article article);
+  void insertArticle(Article article);
 
-	void editArticle(Article article);
+  void editArticle(Article article);
 
-	void deleteArticleById(int articleId);
-
+  void deleteArticleById(String[] articleIds);
 }

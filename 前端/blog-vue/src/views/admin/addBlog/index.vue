@@ -5,11 +5,13 @@
         <el-input v-model="form.title" placeholder="输入文章标题" maxlength="100" show-word-limit />
       </el-form-item>
       <smeditor :config="config" style="margin-bottom:20px" />
-      <el-form-item label="文章标签">
+      <el-form-item label="文章标签" required>
         <el-input v-model="form.articleTags" placeholder="输入文章标签" maxlength="100" />
       </el-form-item>
-      <el-form-item label="文章分类">
-        <el-input v-model="form.categoryId" placeholder="输入文章分类" maxlength="100" />
+      <el-form-item label="文章分类" required>
+        <el-select v-model="form.categoryId" placeholder="请选择分类" size="small">
+          <el-option v-for="item in categoryOptions" :key="item.id" :label="item.categoryName" :value="item.id" />
+        </el-select>
       </el-form-item>
       <el-form-item label="文章类型">
         <el-radio-group v-model="form.articleType">
@@ -50,11 +52,12 @@ export default {
   },
   data() {
     return {
+      categoryOptions: [],
       config: config,
       form: {
         title: '',
         articleTags: '',
-        categoryId: '1',
+        categoryId: null,
         isPublic: '1',
         openComment: '0',
         coverImage: 'b.png',
@@ -62,10 +65,17 @@ export default {
       }
     }
   },
+  computed: {
+    articleId: function() {
+      return this.$route.query.id
+    }
+  },
   mounted() {
+    console.log(this.articleId)
     // 页面改变时,更改尺寸
     window.addEventListener('resize', this.changeTableHeight)
     this.changeTableHeight()
+    this.listCategory()
   },
   methods: {
     changeTableHeight() {
@@ -92,6 +102,14 @@ export default {
           console.log('error submit!!')
         }
       })
+    },
+    listCategory() {
+      this.categoryOptions = []
+      app.get('listCategory').then(data => {
+        if (data.code === 0) {
+          this.categoryOptions = data.msg.rows
+        }
+      }).catch(response => {})
     }
   }
 }

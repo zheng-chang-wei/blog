@@ -8,7 +8,14 @@ const appApi = {
   getArticleById: '/article/getArticleById',
   insertArticle: '/article/insertArticle',
   editArticle: '/article/editArticle',
-  deleteArticleById: '/article/deleteArticleById'
+  deleteArticleById: '/article/deleteArticleById',
+
+  // category
+  listCategory: '/category/listCategory',
+  getCategoryById: '/category/getCategoryById',
+  insertCategory: '/category/insertCategory',
+  editCategory: '/category/editCategory',
+  deleteCategoryById: '/category/deleteCategoryById'
 }
 
 export default appApi

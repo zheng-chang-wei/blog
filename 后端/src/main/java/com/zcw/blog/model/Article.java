@@ -5,6 +5,7 @@ import lombok.Data;
 
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.Transient;
 import java.util.Date;
 
 @Data
@@ -15,6 +16,8 @@ public class Article {
   private Integer id;
 
   private Integer categoryId;
+
+  @Transient private String categoryName;
 
   private Integer userId;
 

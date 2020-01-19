@@ -3,24 +3,29 @@ package com.zcw.blog.service.impl;
 import com.zcw.blog.dao.ArticleMapper;
 import com.zcw.blog.model.Article;
 import com.zcw.blog.service.ArticleService;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Arrays;
 import java.util.List;
 
 @Service
-public class ArticleServiceImpl implements ArticleService {
+public class ArticleServiceImpl extends BaseService<Article> implements ArticleService {
 
   @Autowired ArticleMapper articleMapper;
 
   @Override
-  public List<Article> listArticles() {
-    return articleMapper.selectAll();
+  public List<Article> listArticles(Integer categoryId, String title) {
+    if (StringUtils.isNotEmpty(title)) {
+      title = "%" + title + "%";
+    }
+    return articleMapper.listArticles(categoryId, title);
   }
 
   @Override
   public Article getArticleById(int articleId) {
-    return articleMapper.selectByPrimaryKey(articleId);
+    return selectByKey(articleId);
   }
 
   @Override
@@ -28,16 +33,16 @@ public class ArticleServiceImpl implements ArticleService {
     article.setUserId(1);
     article.setShowCount(0L);
     article.setIsRecommend(false);
-    articleMapper.insert(article);
+    save(article);
   }
 
   @Override
   public void editArticle(Article article) {
-    articleMapper.updateByPrimaryKeySelective(article);
+    updateNotNull(article);
   }
 
   @Override
-  public void deleteArticleById(int articleId) {
-    articleMapper.deleteByPrimaryKey(articleId);
+  public void deleteArticleById(String[] articleIds) {
+    batchDelete(Arrays.asList(articleIds), "id", Article.class);
   }
 }

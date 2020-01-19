@@ -1,4 +1,4 @@
-package com.zcw.blog.model;
+package com.zcw.blog.common.model;
 
 import java.util.HashMap;
 

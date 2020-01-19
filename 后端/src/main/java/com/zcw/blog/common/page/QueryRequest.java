@@ -1,6 +1,5 @@
 package com.zcw.blog.common.page;
 
-import com.google.common.base.MoreObjects;
 import lombok.Data;
 
 import java.io.Serializable;
@@ -13,12 +12,4 @@ public class QueryRequest implements Serializable {
   private int pageSize;
 
   private int pageNum;
-
-  @Override
-  public String toString() {
-    return MoreObjects.toStringHelper(this)
-        .add("pageSize", pageSize)
-        .add("pageNum", pageNum)
-        .toString();
-  }
 }

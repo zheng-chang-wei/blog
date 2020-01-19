@@ -80,6 +80,17 @@ export const constantRoutes = [
       }
     ]
   }, {
+    path: '/categoryManage',
+    component: Layout,
+    children: [
+      {
+        path: '',
+        name: 'CategoryManage',
+        component: () => import('@/views/admin/categoryManage/index'),
+        meta: { title: '分类管理', icon: 'form' }
+      }
+    ]
+  }, {
     path: '/addBlog',
     component: Layout,
     hidden: true,
@@ -88,6 +99,16 @@ export const constantRoutes = [
       name: 'AddBlog',
       component: () => import('@/views/admin/addBlog/index'),
       meta: { title: '添加博客' }
+    }]
+  }, {
+    path: '/editBlog',
+    component: Layout,
+    hidden: true,
+    children: [{
+      path: '/',
+      name: 'EditBlog',
+      component: () => import('@/views/admin/addBlog/index'),
+      meta: { title: '编辑博客' }
     }]
   }, {
     path: '/preview',

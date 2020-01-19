@@ -1,8 +1,3 @@
-/**
- * ***************************************************************************** Copyright (c) 2019,
- * 2019 Hirain Technologies Corporation.
- * ****************************************************************************
- */
 package com.zcw.blog.common.page;
 
 import com.github.pagehelper.PageHelper;
