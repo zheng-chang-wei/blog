@@ -4,7 +4,7 @@
       <PersonalInformation />
     </el-row> -->
     <el-row>
-      <Type />
+      <Category />
     </el-row>
     <el-row>
       <File />
@@ -12,25 +12,25 @@
     <el-row>
       <PopularArticles />
     </el-row>
-    <el-row>
+    <!-- <el-row>
       <LatestComment />
-    </el-row>
+    </el-row> -->
   </section>
 </template>
 
 <script>
 // import PersonalInformation from '../../../components/PersonalInformation'
-import Type from '../../../components/Type'
+import Category from '../../../components/Category'
 import File from '../../../components/File'
 import PopularArticles from '../../../components/PopularArticles'
-import LatestComment from '../../../components/LatestComment'
+// import LatestComment from '../../../components/LatestComment'
 export default {
   components: {
     // PersonalInformation,
-    Type,
+    Category,
     File,
-    PopularArticles,
-    LatestComment
+    PopularArticles
+    // LatestComment
   },
   data() {
     return {

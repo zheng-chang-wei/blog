@@ -232,8 +232,6 @@ export default {
     }
   },
   mounted() {
-    console.log(process.env.VUE_APP_BASE_API)
-    console.log(this.GLOBAL.serverIpAndPort)
     setTimeout(() => {
       editorElement().focus()
       this.insertEmptyP()
@@ -385,10 +383,8 @@ export default {
         const formData = new FormData()
         formData.append('file', file)
         app.uploadFile('upload_file', formData).then(data => {
-          if (data.msg) {
-            if (data.code === 0) {
-              this.insertImageHtml(this.GLOBAL.serverIpAndPort + data.data)
-            }
+          if (data.code === 0) {
+            this.insertImageHtml(this.GLOBAL.serverIpAndPort + data.msg)
           }
         }).catch(response => {})
       })
@@ -449,7 +445,9 @@ export default {
     // 插入代码块
     insertBlock() {
       this.closeAlert()
+      console.log(editorElement().innerHTML)
       document.execCommand('insertHTML', false, `<pre><code><span><br><span></code></pre>`)
+      console.log(editorElement().innerHTML)
     },
     // 插入引用
     insertQuote() {
@@ -677,7 +675,7 @@ function restoreCursor(self) {
 .smeditor .input-area {
   OVERFLOW:auto;
   outline: none;
-  height: 400px;
+  height: 700px;
   width: 100%;
   padding: 10px;
   text-align: left;

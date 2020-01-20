@@ -3,32 +3,43 @@
     <div slot="header" class="clearfix">
       <span>热门文章</span>
     </div>
-    <template v-for="(type,index) in types">
-      <el-row :key="index" style="margin-bottom:10px;margin-left:15%">
-        <el-col :span="18"><el-link :underline="false" href="/">{{ type.label }}</el-link></el-col>
-        <el-col :span="4" class="text">{{ type.count }}篇</el-col>
+    <template v-for="(title,index) in titles">
+      <el-row :key="index" style="margin-bottom:10px;margin-left:2%">
+        <el-col :span="18"><el-link :underline="false" @click="click(title.articleId)">{{ title.title }}</el-link></el-col>
+        <el-col :span="4" class="text">阅读数 {{ title.showCount }}</el-col>
       </el-row>
     </template>
   </el-card>
 </template>
 
 <script>
+import app from '@/common/js/app'
 export default {
   data() {
     return {
-      types: [{
-        label: '2019年12月',
-        count: 10
-      }, {
-        label: '2019年11月',
-        count: 11
-      }, {
-        label: '2019年10月',
-        count: 12
-      }]
+      titles: []
     }
   },
-  methods: {}
+  mounted() {
+    this.statistics()
+  },
+  methods: {
+    statistics() {
+      app.get('statisticsPopularArticles').then(data => {
+        if (data.code === 0) {
+          this.titles = data.msg
+        }
+      }).catch(response => {})
+    },
+    click(articleId) {
+      this.$router.push({
+        path: '/detail',
+        query: {
+          id: articleId
+        }
+      })
+    }
+  }
 }
 </script>
 

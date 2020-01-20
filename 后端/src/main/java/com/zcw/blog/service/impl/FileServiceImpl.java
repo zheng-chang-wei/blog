@@ -1,11 +1,6 @@
-/**
- * ***************************************************************************** Copyright (c) 2019,
- * 2019 Hirain Technologies Corporation.
- * ****************************************************************************
- */
 package com.zcw.blog.service.impl;
 
-import com.zcw.blog.service.FlowService;
+import com.zcw.blog.service.FileService;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -14,7 +9,7 @@ import java.io.IOException;
 import java.util.UUID;
 
 @Service
-public class FlowServiceImpl implements FlowService {
+public class FileServiceImpl implements FileService {
 
   private String uploadRoot = System.getProperty("user.dir") + "//imgs";
 
@@ -36,15 +31,10 @@ public class FlowServiceImpl implements FlowService {
 
   /** */
   @Override
-  public String delete(String filePaths) {
-    String[] pathArray = filePaths.split(",");
-    File root = new File(uploadRoot);
-    for (int i = 0; i < pathArray.length; i++) {
-      String path = pathArray[i];
-      File file = new File(root, path);
-      if (file.exists()) {
-        file.delete();
-      }
+  public String delete(String fileName) {
+    File file = new File(uploadRoot, fileName);
+    if (file.exists()) {
+      file.delete();
     }
     return "删除成功";
   }

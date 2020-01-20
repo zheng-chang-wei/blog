@@ -2,6 +2,10 @@ package com.zcw.blog.service.impl;
 
 import com.zcw.blog.dao.ArticleMapper;
 import com.zcw.blog.model.Article;
+import com.zcw.blog.model.request.ArticleRequest;
+import com.zcw.blog.model.response.StatisticsArticleByDateResponse;
+import com.zcw.blog.model.response.StatisticsArticleCategoryResponse;
+import com.zcw.blog.model.response.StatisticsPopularArticlesResponse;
 import com.zcw.blog.service.ArticleService;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,11 +20,12 @@ public class ArticleServiceImpl extends BaseService<Article> implements ArticleS
   @Autowired ArticleMapper articleMapper;
 
   @Override
-  public List<Article> listArticles(Integer categoryId, String title) {
+  public List<Article> listArticles(ArticleRequest articleRequest) {
+    String title = articleRequest.getTitle();
     if (StringUtils.isNotEmpty(title)) {
       title = "%" + title + "%";
     }
-    return articleMapper.listArticles(categoryId, title);
+    return articleMapper.listArticles(articleRequest);
   }
 
   @Override
@@ -44,5 +49,20 @@ public class ArticleServiceImpl extends BaseService<Article> implements ArticleS
   @Override
   public void deleteArticleById(String[] articleIds) {
     batchDelete(Arrays.asList(articleIds), "id", Article.class);
+  }
+
+  @Override
+  public List<StatisticsArticleCategoryResponse> statisticsArticleCategory() {
+    return articleMapper.statisticsArticleCategory();
+  }
+
+  @Override
+  public List<StatisticsArticleByDateResponse> statisticsArticleByDate() {
+    return articleMapper.statisticsArticleByDate();
+  }
+
+  @Override
+  public List<StatisticsPopularArticlesResponse> statisticsPopularArticles() {
+    return articleMapper.statisticsPopularArticles();
   }
 }

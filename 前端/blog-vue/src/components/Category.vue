@@ -1,12 +1,12 @@
 <template>
   <el-card class="box-card cardStyle">
     <div slot="header" class="clearfix">
-      <span>归档</span>
+      <span>分类专栏</span>
     </div>
-    <template v-for="(date,index) in dates">
+    <template v-for="(category,index) in categorys">
       <el-row :key="index" style="margin-bottom:10px;margin-left:15%">
-        <el-col :span="18"><el-link :underline="false" @click="click(date.updateTime)">{{ date.updateTime }}</el-link></el-col>
-        <el-col :span="4" class="text">{{ date.count }}篇</el-col>
+        <el-col :span="18"><el-link :underline="false" @click="click(category.id)">{{ category.categoryName }}</el-link></el-col>
+        <el-col :span="4" class="text">{{ category.count }}篇</el-col>
       </el-row>
     </template>
   </el-card>
@@ -17,7 +17,7 @@ import app from '@/common/js/app'
 export default {
   data() {
     return {
-      dates: []
+      categorys: []
     }
   },
   mounted() {
@@ -25,14 +25,14 @@ export default {
   },
   methods: {
     statistics() {
-      app.get('statisticsArticleByDate').then(data => {
+      app.get('statisticsArticleCategory').then(data => {
         if (data.code === 0) {
-          this.dates = data.msg
+          this.categorys = data.msg
         }
       }).catch(response => {})
     },
-    click(updateTime) {
-      this.$root.Bus.$emit('refreshArticle', { updateTime: updateTime })
+    click(categoryId) {
+      this.$root.Bus.$emit('refreshArticle', { categoryId: categoryId })
     }
   }
 }

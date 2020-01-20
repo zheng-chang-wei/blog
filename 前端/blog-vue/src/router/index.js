@@ -5,7 +5,7 @@ Vue.use(Router)
 
 /* Layout */
 import Layout from '@/layout'
-import Main from '@/views/main'
+import Main from '@/views/blog/main'
 
 /**
  * Note: sub-menu only appear when route children.length >= 1
@@ -42,8 +42,7 @@ export const constantRoutes = [
     path: '/404',
     component: () => import('@/views/404'),
     hidden: true
-  },
-  {
+  }, {
     path: '/',
     name: 'Main',
     component: Main,
@@ -52,14 +51,22 @@ export const constantRoutes = [
     children: [{
       path: '/home',
       name: '首页',
-      component: () => import('@/views/home')
+      component: () => import('@/views/blog/home')
     }, {
       path: '/blog',
       name: '博客',
-      component: () => import('@/views/blog/index')
+      component: () => import('@/views/blog/blogList/index')
     }]
-  },
-  {
+  }, {
+    path: '/detail',
+    component: Main,
+    hidden: true,
+    children: [{
+      path: '',
+      name: 'Detail',
+      component: () => import('@/views/blog/blogDetails/index')
+    }]
+  }, {
     path: '/admin',
     component: Layout,
     children: [{

@@ -8,11 +8,11 @@
   >
     <el-row>
       <el-col style="width:25%;">
-        <img style="width:100%;cursor:pointer;" src="http://www.siyuanblog.com/wp-content/uploads/2018/11/电子制造_Electronic-manufacturing_tilt-shift-photography-of-green-computer-motherboard-640x480.jpg" class="image" @click="click">
+        <img style="width:100%;cursor:pointer;" :src="GLOBAL.serverIpAndPort + blogItem.coverImage" class="image" @click="click">
       </el-col>
       <el-col style="width:70%;margin-left:15px">
-        <el-link :underline="false">Macbook远程查看Ubuntu服务器上的TensorBoard</el-link>
-        <p>更好地使用TensorBoard</p>
+        <el-link :underline="false" @click="click">{{ blogItem.title }}</el-link>
+        <p>{{ blogItem.title }}</p>
       </el-col>
     </el-row>
   </el-card>
@@ -20,16 +20,24 @@
 
 <script>
 export default {
+  props: {
+    blogItem: {
+      type: Object,
+      default: null
+    }
+  },
   data() {
     return {
-      a: 1
     }
   },
   methods: {
     click() {
-      if (this.a === 1) {
-        console.log(111)
-      }
+      this.$router.push({
+        path: '/detail',
+        query: {
+          id: this.blogItem.id
+        }
+      })
     }
   }
 }

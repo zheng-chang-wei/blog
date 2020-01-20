@@ -4,8 +4,8 @@ import com.zcw.blog.common.model.ResponseBo;
 import com.zcw.blog.common.page.PageService;
 import com.zcw.blog.common.page.QueryRequest;
 import com.zcw.blog.model.Article;
+import com.zcw.blog.model.request.ArticleRequest;
 import com.zcw.blog.service.ArticleService;
-import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/article")
-@Slf4j
 public class ArticleController {
 
   @Autowired ArticleService articleService;
@@ -22,10 +21,10 @@ public class ArticleController {
   @Autowired PageService pageService;
 
   @GetMapping("/listArticles")
-  public ResponseBo listArticles(QueryRequest request, Integer categoryId, String title) {
+  public ResponseBo listArticles(QueryRequest request, ArticleRequest articleRequest) {
     return ResponseBo.ok(
         pageService.selectByPageNumSize(
-            request, () -> articleService.listArticles(categoryId, title)));
+            request, () -> articleService.listArticles(articleRequest)));
   }
 
   @GetMapping("/getArticleById")

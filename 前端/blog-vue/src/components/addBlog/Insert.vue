@@ -50,7 +50,7 @@ export default {
   data() {
     return {
       labels: ['图片', '分割线', '视频', '代码块'],
-      names: ['insertimage', 'insertline', 'insertvideo', 'insertblock']
+      names: ['insertimage', 'insertLine', 'insertVideo', 'insertBlock']
     }
   },
   methods: {
