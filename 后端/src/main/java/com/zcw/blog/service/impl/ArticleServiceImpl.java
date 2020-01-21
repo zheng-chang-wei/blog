@@ -24,6 +24,7 @@ public class ArticleServiceImpl extends BaseService<Article> implements ArticleS
     String title = articleRequest.getTitle();
     if (StringUtils.isNotEmpty(title)) {
       title = "%" + title + "%";
+      articleRequest.setTitle(title);
     }
     return articleMapper.listArticles(articleRequest);
   }

@@ -32,7 +32,7 @@ export default {
       }).catch(response => {})
     },
     click(updateTime) {
-      this.$root.Bus.$emit('refreshArticle', { updateTime: updateTime })
+      this.$bus.$emit('refreshArticle', { updateTime: updateTime })
     }
   }
 }

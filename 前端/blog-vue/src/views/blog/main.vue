@@ -13,10 +13,10 @@
       <el-menu-item id="menu" class="center" style="margin-left:70%">
         <el-row>
           <el-col style="width:80%">
-            <el-input v-model="search" placeholder="Search" />
+            <el-input v-model="title" placeholder="Search" />
           </el-col>
           <el-col style="width:17%;margin-left:3%">
-            <el-button icon="el-icon-search" />
+            <el-button icon="el-icon-search" @click="searchClick" />
           </el-col>
         </el-row>
       </el-menu-item>
@@ -37,7 +37,7 @@ export default {
   components: {},
   data() {
     return {
-      search: '',
+      title: '',
       activeIndex: '/home'
     }
   },
@@ -49,7 +49,9 @@ export default {
     this.activeIndex = this.$route.path
   },
   methods: {
-
+    searchClick() {
+      this.$bus.$emit('refreshArticle', { title: this.title })
+    }
   }
 }
 

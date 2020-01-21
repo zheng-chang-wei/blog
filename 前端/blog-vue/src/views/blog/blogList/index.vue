@@ -29,6 +29,7 @@ export default {
       blogs: [],
       updateTime: null,
       categoryId: null,
+      title: null,
       listLoading: false,
       total: 0,
       pageNum: 1,
@@ -38,17 +39,19 @@ export default {
   },
   mounted() {
     this.onSubmit(1)
-    this.$root.Bus.$on('refreshArticle', (data) => {
+    this.$bus.$on('refreshArticle', (data) => {
       if (data.categoryId) {
         this.categoryId = data.categoryId
       } else if (data.updateTime) {
         this.updateTime = data.updateTime
+      } else if (data.title) {
+        this.title = data.title
       }
       this.onSubmit(1)
     })
   },
   beforeDestroy() {
-    this.$root.Bus.$off('refreshArticle')
+    this.$bus.$off('refreshArticle')
   },
   methods: {
     onSubmit(currentPage) {
@@ -69,6 +72,7 @@ export default {
       const parm = {
         updateTime: this.updateTime,
         categoryId: this.categoryId,
+        title: this.title,
         pageNum: this.pageNum,
         pageSize: this.pageSize
       }

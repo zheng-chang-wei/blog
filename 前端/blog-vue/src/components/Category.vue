@@ -32,7 +32,7 @@ export default {
       }).catch(response => {})
     },
     click(categoryId) {
-      this.$root.Bus.$emit('refreshArticle', { categoryId: categoryId })
+      this.$bus.$emit('refreshArticle', { categoryId: categoryId })
     }
   }
 }
