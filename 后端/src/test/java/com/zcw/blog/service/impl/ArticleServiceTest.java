@@ -28,7 +28,7 @@ public class ArticleServiceTest {
   public void testInsertArticle() {
     Article article = new Article();
     article.setCategoryId(1);
-    article.setArticleTags("标签");
+//    article.setArticleTags("标签");
     article.setContent("内容");
     article.setArticleType((byte) 1);
     article.setCoverImage("封面");
@@ -47,7 +47,7 @@ public class ArticleServiceTest {
     Article article = new Article();
     article.setId(21);
     article.setCategoryId(1);
-    article.setArticleTags("标签1");
+//    article.setArticleTags("标签1");
     article.setContent("内容1");
     article.setArticleType((byte) 1);
     article.setCoverImage("封面1");

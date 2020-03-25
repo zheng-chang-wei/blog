@@ -16,11 +16,13 @@ public class ResponseBo extends HashMap<String, Object> {
   private static final Integer FAIL = 500;
 
   public ResponseBo() {
+
     put("code", SUCCESS);
     put("msg", "操作成功");
   }
 
   public static ResponseBo error(Object msg) {
+
     ResponseBo responseBo = new ResponseBo();
     responseBo.put("code", FAIL);
     responseBo.put("msg", msg);
@@ -28,20 +30,15 @@ public class ResponseBo extends HashMap<String, Object> {
   }
 
   public static ResponseBo warn(Object msg) {
+
     ResponseBo responseBo = new ResponseBo();
     responseBo.put("code", WARN);
     responseBo.put("msg", msg);
     return responseBo;
   }
 
-  public static ResponseBo warn(RespCodeEnum respCode) {
-    ResponseBo responseBo = new ResponseBo();
-    responseBo.put("code", respCode.code);
-    responseBo.put("msg", respCode.name);
-    return responseBo;
-  }
-
   public static ResponseBo ok(Object msg) {
+
     ResponseBo responseBo = new ResponseBo();
     responseBo.put("code", SUCCESS);
     responseBo.put("msg", msg);
@@ -53,6 +50,7 @@ public class ResponseBo extends HashMap<String, Object> {
   }
 
   public static ResponseBo error() {
+
     return ResponseBo.error("");
   }
 

@@ -23,7 +23,7 @@ public class Article {
 
   private String title;
 
-  private String articleTags;
+//  private String articleTags;
 
   private Boolean isPublic;
 
@@ -37,8 +37,8 @@ public class Article {
 
   private Byte articleType;
 
-  @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
-  private Date createTime;
+//  @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
+//  private Date createTime;
 
   @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
   private Date updateTime;

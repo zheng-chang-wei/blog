@@ -35,8 +35,8 @@ public interface ArticleMapper extends CommonMapper<Article> {
       String sql =
           "SELECT article.id, article.title, article.update_time, article.show_count, article.cover_image, category.category_name FROM article "
               + "LEFT JOIN category ON article.category_id = category.id "
-              + "LEFT JOIN `user` ON article.user_id = `user`.id "
-              + "WHERE true and `user`.id = 1 ";
+              + "LEFT JOIN `sys_user` ON article.user_id = `sys_user`.id "
+              + "WHERE true and `sys_user`.id = 1 ";
       if (articleRequest.getCategoryId() != null) {
         sql += " and article.category_id =#{categoryId}";
       }

@@ -1,13 +1,13 @@
 <template>
   <div class="app-container">
     <el-form ref="retrieveForm" :inline="true" :model="retrieveForm">
-      <el-form-item>
+      <el-form-item label="标题">
+        <el-input v-model="retrieveForm.title" placeholder="请输入标题关键字" size="small" />
+      </el-form-item>
+      <el-form-item label="分类">
         <el-select v-model="retrieveForm.categoryId" placeholder="请选择分类" size="small">
           <el-option v-for="item in categoryOptions" :key="item.id" :label="item.categoryName" :value="item.id" />
         </el-select>
-      </el-form-item>
-      <el-form-item>
-        <el-input v-model="retrieveForm.title" placeholder="请输入标题关键字" size="small" />
       </el-form-item>
       <el-form-item>
         <el-button type="primary" size="small" icon="el-icon-search" @click="onSubmit(1)">查询</el-button>
@@ -59,7 +59,7 @@ export default {
       categoryOptions: [],
       retrieveForm: {
         categoryId: null,
-        title: ''
+        title: null
       },
       listLoading: false,
       tableMaxHeight: 0,

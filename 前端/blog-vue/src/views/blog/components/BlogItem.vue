@@ -20,7 +20,7 @@
             <p style="margin-left:4px"> <i class="el-icon-view" /> 阅读（{{ blogItem.showCount }}）</p>
           </el-col>
           <el-col :span="7">
-            <p> <i class="el-icon-chat-dot-round" /> 评论（{{ blogItem.showCount }}）</p>
+            <p> <i class="el-icon-chat-dot-round" /> 评论（0）</p>
           </el-col>
           <!-- <el-col :span="4" class="center">
             <el-col :span="6">

@@ -54,9 +54,6 @@ export default {
   postJSON(url, data) {
     return axios.post(allApi[url], JSON.parse(JSON.stringify(data)))
   },
-  uploadFile(url, data) {
-    return axios.post(allApi[url], data)
-  },
   getUrl(url) {
     return allApi[url]
   }

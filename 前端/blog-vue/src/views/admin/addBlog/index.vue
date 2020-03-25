@@ -18,9 +18,9 @@
           <i v-else class="el-icon-plus avatar-uploader-icon" />
         </el-upload>
       </el-form-item>
-      <el-form-item label="文章标签" required>
+      <!-- <el-form-item label="文章标签" required>
         <el-input v-model="form.articleTags" placeholder="输入文章标签" maxlength="100" />
-      </el-form-item>
+      </el-form-item> -->
       <el-form-item label="文章分类" required>
         <el-select v-model="form.categoryId" placeholder="请选择分类" size="small">
           <el-option v-for="item in categoryOptions" :key="item.id" :label="item.categoryName" :value="item.id" />
@@ -69,8 +69,6 @@ export default {
       form: {
         // 标题
         title: '',
-        // 标签
-        articleTags: '',
         // 类型
         categoryId: null,
         // 是否公开
@@ -147,7 +145,6 @@ export default {
             this.form = {
               id: this.articleId,
               title: msg.title,
-              articleTags: msg.articleTags,
               categoryId: msg.categoryId,
               isPublic: msg.isPublic ? '1' : '0',
               openComment: msg.openComment ? '1' : '0',
