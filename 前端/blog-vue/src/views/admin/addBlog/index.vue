@@ -166,7 +166,7 @@ export default {
     uploadFile(file) {
       const formData = new FormData()
       formData.append('file', file.file)
-      app.uploadFile('upload_file', formData).then(data => {
+      app.postData('upload_file', formData).then(data => {
         if (data.code === 0) {
           this.form.coverImage = data.msg
         }

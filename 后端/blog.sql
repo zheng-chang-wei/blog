@@ -1,22 +1,22 @@
 /*
 Navicat MySQL Data Transfer
 
-Source Server         : localhost_3306
-Source Server Version : 50624
+Source Server         : localhost
+Source Server Version : 50536
 Source Host           : localhost:3306
 Source Database       : blog
 
 Target Server Type    : MYSQL
-Target Server Version : 50624
+Target Server Version : 50536
 File Encoding         : 65001
 
-Date: 2020-03-25 19:23:52
+Date: 2020-03-25 23:13:50
 */
 
 SET FOREIGN_KEY_CHECKS=0;
 
 -- ----------------------------
--- Table structure for `article`
+-- Table structure for article
 -- ----------------------------
 DROP TABLE IF EXISTS `article`;
 CREATE TABLE `article` (
@@ -32,8 +32,8 @@ CREATE TABLE `article` (
   `cover_image` varchar(255) DEFAULT NULL COMMENT '封面',
   `is_recommend` tinyint(4) unsigned NOT NULL DEFAULT '0' COMMENT '是否推荐',
   `article_type` tinyint(4) unsigned NOT NULL DEFAULT '0' COMMENT '0=原创,1=转载',
-  `create_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '发表时间',
   `update_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '发表时间',
+  `create_time` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `category_id` (`category_id`) USING BTREE
 ) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8 COMMENT='文章表';
@@ -51,7 +51,7 @@ INSERT INTO `article` VALUES ('12', '1', '1', 'test2', '<p>test2</p>', 'tset2', 
 INSERT INTO `article` VALUES ('13', '1', '1', 'test4', '<p><br></p><p>test3<br></p><p><br></p><div class=\"image-desc\" style=\"text-align: center; color: #333;\">\n                <img class=\"uploaded-img\" src=\"http://localhost:8081/20ce21e0-191e-418c-99b5-60b9e601acd8.png\" max-width=\"100%\" width=\"auto\" height=\"auto\">\n                <br>\n                <div class=\"image-caption\" style=\"min-width: 20%; max-width: 80%; height: 35px; display: inline-block; padding: 10px 10px 0px 10px; margin: 0 auto; border-bottom: 1px solid #d9d9d9; font-size: 16px; color: #999; content: \" \";\"=\"\"></div></div>', 'test3', '1', '0', '0', 'b6167548-c45f-4d62-a269-fa6bd82599d8.png', '0', '1', '2020-01-20 14:39:52', '2020-01-20 14:43:42');
 
 -- ----------------------------
--- Table structure for `category`
+-- Table structure for category
 -- ----------------------------
 DROP TABLE IF EXISTS `category`;
 CREATE TABLE `category` (
@@ -74,7 +74,7 @@ INSERT INTO `category` VALUES ('8', 'IIS');
 INSERT INTO `category` VALUES ('9', '面试');
 
 -- ----------------------------
--- Table structure for `log`
+-- Table structure for log
 -- ----------------------------
 DROP TABLE IF EXISTS `log`;
 CREATE TABLE `log` (
@@ -95,7 +95,7 @@ CREATE TABLE `log` (
 -- ----------------------------
 
 -- ----------------------------
--- Table structure for `sys_role`
+-- Table structure for sys_role
 -- ----------------------------
 DROP TABLE IF EXISTS `sys_role`;
 CREATE TABLE `sys_role` (
@@ -111,7 +111,7 @@ CREATE TABLE `sys_role` (
 INSERT INTO `sys_role` VALUES ('1', 'admin', null);
 
 -- ----------------------------
--- Table structure for `sys_user`
+-- Table structure for sys_user
 -- ----------------------------
 DROP TABLE IF EXISTS `sys_user`;
 CREATE TABLE `sys_user` (
@@ -138,7 +138,7 @@ CREATE TABLE `sys_user` (
 INSERT INTO `sys_user` VALUES ('1', 'admin', '$2a$10$ySG2lkvjFHY5O0./CPIE1OI8VJsuKYEzOYzqIa7AJR6sEgSzUFOAm', '/image/miao.png', '暖暖动听', '18813095686', '1130196938@qq.com', '有些东西，看似离我们很近，但却很远，努力向它靠近，也许能触及到，也许触及不到，顺其自然，平常心对待，其他的都交给时间，或迟或早，都会有一个结果。', '河南-信阳', '作者原本单纯的做一个个人博客，所以很多的细节比较随意。<br>\n                    目前项目已经托管在github和oschina上，准备长期去优化和维护。<br>\n                    如果您有什么好的建议或者想法都可以通过邮件或者issue反馈给我，我会尽量及时的去处理。<br>\n                    mail： eumji025@gmail.com<br>\n                    github: https://github.com/eumji025/EumJi-blog/issues/ <br>\n                    oschina: https://git.oschina.net/eumji025/zblog/issues<br>', '', '', '');
 
 -- ----------------------------
--- Table structure for `sys_user_role`
+-- Table structure for sys_user_role
 -- ----------------------------
 DROP TABLE IF EXISTS `sys_user_role`;
 CREATE TABLE `sys_user_role` (
