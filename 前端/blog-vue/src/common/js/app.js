@@ -1,7 +1,7 @@
 import axios from 'axios'
 import allApi from './allApi'
 import qs from 'qs'
-axios.defaults.baseURL = 'dev-api'
+// axios.defaults.baseURL = 'api'
 import router from '../../router'
 import { Notify, Message } from 'element-ui'
 var notifyList = []

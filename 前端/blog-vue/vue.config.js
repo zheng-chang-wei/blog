@@ -42,6 +42,13 @@ module.exports = {
         pathRewrite: {
           ['^' + process.env.VUE_APP_BASE_API]: ''
         }
+      },
+      [process.env.VUE_APP_BASE_SSO]: {
+        target: process.env.IP_SSO,
+        changeOrigin: true,
+        pathRewrite: {
+          ['^' + process.env.VUE_APP_BASE_SSO]: ''
+        }
       }
     }
     // after: require('./mock/mock-server.js')
