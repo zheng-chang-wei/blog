@@ -41,11 +41,21 @@ export default {
     this.onSubmit(1)
     this.$bus.$on('refreshArticle', (data) => {
       if (data.categoryId) {
+        this.updateTime = null
+        this.title = null
         this.categoryId = data.categoryId
       } else if (data.updateTime) {
+        this.categoryId = null
+        this.title = null
         this.updateTime = data.updateTime
       } else if (data.title) {
+        this.categoryId = null
+        this.updateTime = null
         this.title = data.title
+      } else {
+        this.categoryId = null
+        this.updateTime = null
+        this.title = null
       }
       this.onSubmit(1)
     })

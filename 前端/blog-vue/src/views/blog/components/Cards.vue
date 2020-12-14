@@ -1,8 +1,5 @@
 <template>
   <section>
-    <!-- <el-row>
-      <PersonalInformation />
-    </el-row> -->
     <el-row>
       <Category />
     </el-row>
@@ -12,9 +9,6 @@
     <el-row>
       <PopularArticles />
     </el-row>
-    <!-- <el-row>
-      <LatestComment />
-    </el-row> -->
   </section>
 </template>
 

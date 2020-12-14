@@ -12,7 +12,7 @@ spring:
       driverClassName: com.mysql.cj.jdbc.Driver
       url: jdbc:mysql://localhost:3306/blog?useUnicode=true&characterEncoding=utf8&serverTimezone=GMT%2B8
       username: root
-      password: 123456
+      password: zcw_123456_ZCW
 
   #  aop:
   #    proxy-target-class: true

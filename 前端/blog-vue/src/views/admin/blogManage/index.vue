@@ -1,5 +1,5 @@
 <template>
-  <div class="app-container">
+  <div id="blogManage" class="app-container">
     <el-form ref="retrieveForm" :inline="true" :model="retrieveForm">
       <el-form-item label="标题">
         <el-input v-model="retrieveForm.title" placeholder="请输入标题关键字" size="small" />
@@ -34,18 +34,18 @@
     >
       <el-table-column type="selection" align="center" width="45" />
       <el-table-column label="标题" prop="title" align="center" sortable />
-      <el-table-column label="分类" prop="categoryName" align="center" sortable />
-      <el-table-column label="创建日期" prop="updateTime" align="center" sortable />
-      <el-table-column align="center">
+      <el-table-column label="分类" prop="categoryName" align="center" sortable width="160" />
+      <el-table-column label="创建日期" prop="updateTime" align="center" sortable width="160" />
+      <el-table-column align="center" width="200">
         <template slot-scope="scope">
-          <el-button size="mini" icon="el-icon-edit" @click="handleEdit(scope.$index, scope.row)">编辑</el-button>
+          <el-button size="mini" type="primary" icon="el-icon-edit" @click="handleEdit(scope.$index, scope.row)">编辑</el-button>
           <el-button size="mini" type="danger" icon="el-icon-delete" @click="handleDelete(scope.$index, scope.row)">删除</el-button>
         </template>
       </el-table-column>
     </el-table>
 
     <!--分页  工具条-->
-    <el-col :span="24" class="toolbar" style="position:absolute;bottom:20px;right:20px">
+    <el-col :span="24" class="toolbar" style="position:absolute;bottom:10px;right:20px">
       <el-pagination :current-page.sync="currentPage" :page-sizes="[10, 50, 100]" :page-size="pageSize" layout="total, sizes, prev, pager, next, jumper" :total="total" style="float: right;" @size-change="handleSizeChange" @current-change="handleCurrentChange" />
     </el-col>
   </div>
@@ -83,7 +83,7 @@ export default {
   methods: {
     // 动态更改表格最大高度
     changeTableMaxHeight() {
-      this.tableMaxHeight = document.body.offsetHeight - 270
+      this.tableMaxHeight = document.body.offsetHeight - 203
     },
     onSubmit(currentPage) {
       this.currentPage = currentPage
@@ -151,8 +151,8 @@ export default {
         type: 'warning'
       }).then(() => {
         this.listLoading = true
-        app.post('deleteArticleById', deleteParm).then(data => {
-          if (data.code === 0) {
+        app.post('deleteArticleById', deleteParm).then(res => {
+          if (res.code === 0) {
             const parm = {
               categoryId: this.retrieveForm.categoryId,
               title: this.retrieveForm.title,
@@ -205,7 +205,9 @@ export default {
 }
 </script>
 
-<style scoped>
-
+<style>
+#blogManage .el-form-item {
+    margin-bottom: 5px;
+}
 </style>
 

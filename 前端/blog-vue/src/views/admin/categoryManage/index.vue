@@ -1,5 +1,5 @@
 <template>
-  <div class="app-container">
+  <div id="categoryManage" class="app-container">
     <el-form ref="retrieveForm" :inline="true" :model="retrieveForm">
       <el-form-item>
         <el-input v-model="retrieveForm.categoryName" placeholder="请输入标题关键字" size="small" />
@@ -31,7 +31,7 @@
       <el-table-column label="分类" prop="categoryName" align="center" sortable />
       <el-table-column align="center">
         <template slot-scope="scope">
-          <el-button size="mini" icon="el-icon-edit" @click="handleEdit(scope.$index, scope.row)">编辑</el-button>
+          <el-button size="mini" type="primary" icon="el-icon-edit" @click="handleEdit(scope.$index, scope.row)">编辑</el-button>
           <el-button size="mini" type="danger" icon="el-icon-delete" @click="handleDelete(scope.$index, scope.row)">删除
           </el-button>
         </template>
@@ -109,7 +109,7 @@ export default {
   methods: {
     // 动态更改表格最大高度
     changeTableMaxHeight() {
-      this.tableMaxHeight = document.body.offsetHeight - 250
+      this.tableMaxHeight = document.body.offsetHeight - 203
     },
     onSubmit(currentPage) {
       this.currentPage = currentPage
@@ -180,8 +180,8 @@ export default {
         type: 'warning'
       }).then(() => {
         this.listLoading = true
-        app.post('deleteCategoryById', deleteParm).then(data => {
-          if (data.code === 0) {
+        app.post('deleteCategoryById', deleteParm).then(res => {
+          if (res.code === 0) {
             const parm = {
               name: this.retrieveForm.categoryName,
               pageNum: this.pageNum,
@@ -254,7 +254,9 @@ export default {
 }
 </script>
 
-<style scoped>
-
+<style>
+#categoryManage .el-form-item {
+    margin-bottom: 5px;
+}
 </style>
 

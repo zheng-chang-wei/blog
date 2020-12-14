@@ -5,22 +5,6 @@
         <el-input v-model="form.title" placeholder="输入文章标题" maxlength="100" show-word-limit />
       </el-form-item>
       <smeditor :config="config" style="margin-bottom:20px" />
-      <el-form-item label="文章封面" required>
-        <el-upload
-          class="avatar-uploader"
-          action=""
-          :show-file-list="false"
-          :http-request="uploadFile"
-          :before-upload="beforeAvatarUpload"
-          accept=".jpg,.png"
-        >
-          <img v-if="form.coverImage" :src="GLOBAL.serverIpAndPort + form.coverImage" class="avatar">
-          <i v-else class="el-icon-plus avatar-uploader-icon" />
-        </el-upload>
-      </el-form-item>
-      <!-- <el-form-item label="文章标签" required>
-        <el-input v-model="form.articleTags" placeholder="输入文章标签" maxlength="100" />
-      </el-form-item> -->
       <el-form-item label="文章分类" required>
         <el-select v-model="form.categoryId" placeholder="请选择分类" size="small">
           <el-option v-for="item in categoryOptions" :key="item.id" :label="item.categoryName" :value="item.id" />
@@ -112,10 +96,9 @@ export default {
             url = 'editArticle'
           }
           app.post(url, this.form).then(data => {
-            if (data.msg) {
-              if (data.code === 0) {
-                this.$router.push('/blogManage')
-              }
+            if (data.code === 0) {
+              this.$message.success('发布成功')
+              this.$router.push('/blogManage')
             }
           }).catch(response => {})
         } else {

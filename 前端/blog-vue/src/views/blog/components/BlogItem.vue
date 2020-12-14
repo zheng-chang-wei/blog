@@ -7,29 +7,18 @@
     shadow="always"
   >
     <el-row>
-      <el-col style="width:25%;">
-        <img style="width:100%;cursor:pointer;" :src="GLOBAL.serverIpAndPort + blogItem.coverImage" class="image" @click="click">
-      </el-col>
       <el-col style="width:70%;margin-left:15px">
         <el-link :underline="false" @click="click">{{ blogItem.title }}</el-link>
         <el-row>
           <el-col :span="8">
-            <p><i class="el-icon-time" /> {{ blogItem.updateTime }}</p>
+            <p><em class="el-icon-time" /> {{ blogItem.updateTime }}</p>
           </el-col>
           <el-col :span="5">
-            <p style="margin-left:4px"> <i class="el-icon-view" /> 阅读（{{ blogItem.showCount }}）</p>
+            <p style="margin-left:4px"> <em class="el-icon-view" /> 阅读（{{ blogItem.showCount }}）</p>
           </el-col>
           <el-col :span="7">
-            <p> <i class="el-icon-chat-dot-round" /> 评论（0）</p>
+            <p> <em class="el-icon-chat-dot-round" /> 评论（0）</p>
           </el-col>
-          <!-- <el-col :span="4" class="center">
-            <el-col :span="6">
-              <img class="center" :src="require('../../../assets/赞.svg')">
-            </el-col>
-            <el-col :span="18">
-              <p> 赞（{{ blogItem.showCount }}）</p>
-            </el-col>
-          </el-col> -->
         </el-row>
         <p>{{ blogItem.title }}</p>
       </el-col>

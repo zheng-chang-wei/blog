@@ -2,7 +2,7 @@ const appApi = {
   // 用户管理
   logIn: '/sso/login', // 登入
   logOut: '/sso/logout', // 登出
-  upload_file: '/sso/file/uploadImg',
+  upload_file: '/api/file/uploadImg',
 
   listArticles: '/api/article/listArticles',
   getArticleById: '/api/article/getArticleById',
